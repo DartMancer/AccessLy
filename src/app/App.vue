@@ -8,23 +8,10 @@ const { layout } = useLayout()
 
 const theme = ref({
   token: {
-    colorPrimary: '#cf4d9c',
-    colorPrimaryHover: '#6f76ad;',
+    colorPrimary: '#ff4141',
+    colorPrimaryHover: '#c52d2d;',
     colorSuccess: '#c0ff8f',
     colorError: '#ff7c7c',
-  },
-  components: {
-    Radio: {
-      colorBorder: '#959bcd',
-      colorBgContainer: '#3a3e62',
-      colorText: '#ffffff',
-      colorPrimary: '#cf4d9c',
-    },
-    Checkbox: {
-      colorPrimaryHover: '#b34488',
-      colorBgContainer: 'transparent',
-      colorBorder: '#959bcd',
-    },
   },
 })
 </script>

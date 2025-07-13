@@ -1,1 +1,1 @@
-<template>RoleCreatePage</template>
+<template><div>RoleCreatePage</div></template>

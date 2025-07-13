@@ -1,1 +1,1 @@
-<template>RoleDetailsPage</template>
+<template><div>RoleDetailsPage</div></template>

@@ -15,10 +15,9 @@ defineProps<{ fullW?: boolean }>()
   align-items: center;
   height: 100%;
   gap: 10px;
-  border: 2px solid var(--accent-color);
+  border: 2px solid rgba($color: #000000, $alpha: 0.2);
   border-radius: 12px;
-  background-color: var(--opacity-element-color);
-  box-shadow: 0 0 10px 0 var(--accent-color);
+  background-color: white;
   backdrop-filter: blur(10px);
   will-change: backdrop-filter;
   transition: backdrop-filter 0.2s ease-in-out;
