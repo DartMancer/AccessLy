@@ -13,7 +13,7 @@ const routeTo = (path: string) => router.push(path)
 <template>
   <header class="header">
     <a-flex class="header-body" justify="space-between">
-      <span class="title" @click="routeTo('/')"> Accessly </span>
+      <span class="title" @click="routeTo('/')"> AccessLy </span>
     </a-flex>
   </header>
 </template>
