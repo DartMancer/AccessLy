@@ -45,8 +45,8 @@ const theme = ref({
   </a-config-provider>
 </template>
 
-<style lang="scss" scoped>
-@import url('./style/custom.scss');
+<style lang="scss">
+// @import url('./style/custom.scss');
 @import url('./style/style.scss');
 @import url('./style/vars.scss');
 @import url('./style/transition.scss');
