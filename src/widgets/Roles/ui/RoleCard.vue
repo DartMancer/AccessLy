@@ -1,24 +1,31 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import type { Role } from '@/entities/role'
-import { BaseButton, BaseContainer } from '@/shared/ui'
+import { Trash2 } from 'lucide-vue-next'
+import { BaseContainer } from '@/shared/ui/Base'
+import { BaseButton } from '@/shared/ui/Buttons'
+import { useRoleStore, type Role } from '@/entities/role'
 
-const props = defineProps<{ role: Role }>()
+const { removeRole } = useRoleStore()
+
+const { role } = defineProps<{ role: Role }>()
 const router = useRouter()
 
 const goToDetails = () => {
-  router.push(`/roles/${props.role.id}`)
+  router.push(`/roles/${role.id}`)
 }
 </script>
 
 <template>
   <BaseContainer class="base-container" fullW>
     <div class="base-container__info">
-      <strong>{{ role.name }}</strong>
+      <strong class="title">{{ role.name }}</strong>
       <p v-if="role.description">{{ role.description }}</p>
     </div>
 
-    <BaseButton class="base-btn" text="Подробнее" @click="goToDetails" primary />
+    <a-flex gap="10">
+      <BaseButton class="base-btn" text="Подробнее" @click="goToDetails" primary />
+      <BaseButton class="base-btn delete" :icon="Trash2" @click="removeRole(role.id)" outlined />
+    </a-flex>
   </BaseContainer>
 </template>
 
@@ -35,6 +42,18 @@ const goToDetails = () => {
   &__info {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.title {
+  font-size: 18px;
+}
+
+.base-btn {
+  &.delete {
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0;
   }
 }
 </style>

@@ -1,21 +1,27 @@
 <script lang="ts" setup>
+import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRoleStore } from '@/entities/role/store'
 import { RoleSearch, CreateRoleTrigger } from '@/features/Roles'
 import { RoleCard } from '@/widgets/Roles'
 
 const { roles } = storeToRefs(useRoleStore())
+const search = ref('')
+
+const filteredRoles = computed(() =>
+  roles.value.filter((r) => r.name.toLowerCase().includes(search.value.toLowerCase())),
+)
 </script>
 
 <template>
   <div class="roles-list-page">
     <div class="roles-list-page__header">
-      <RoleSearch />
+      <RoleSearch v-model:value="search" />
       <CreateRoleTrigger />
     </div>
 
     <div class="roles-list-page__list">
-      <RoleCard v-for="role in roles" :key="role.id" :role="role" />
+      <RoleCard v-for="role in filteredRoles" :key="role.id" :role="role" />
     </div>
   </div>
 </template>

@@ -1,2 +1,4 @@
-export { default as CreateRoleTrigger } from './ui/CreateRoleTrigger.vue'
-export { default as RoleSearch } from './ui/RoleSearch.vue'
+export * from './ui/AddPermissionTrigger'
+export * from './ui/AddUserTrigger'
+export * from './ui/CreateRoleTrigger'
+export * from './ui/RoleSearch'

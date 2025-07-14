@@ -33,7 +33,7 @@ const theme = ref({
 </template>
 
 <style lang="scss">
-// @import url('./style/custom.scss');
+@import url('./style/custom.scss');
 @import url('./style/style.scss');
 @import url('./style/vars.scss');
 @import url('./style/transition.scss');
