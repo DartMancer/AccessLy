@@ -67,7 +67,7 @@ src/
 ### Управление доступами
 Редактируемые права в формате таблицы.
 
-![Permissions Table](./screenshots/permissions-table.png)
+![Permissions Table](./screenshots/permission-table.png)
 
 ---
 
