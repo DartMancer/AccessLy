@@ -16,7 +16,7 @@ export const useRoleEditStore = defineStore('roleEdit', () => {
   const activeTab = ref<'permissions' | 'users'>('permissions')
 
   // Режим редактирования (используется для UI-контроля)
-  const isEditing = ref<boolean>(false)
+  const isEditing = ref<'DETAIL' | 'EDIT'>('DETAIL')
 
   const isChanged = computed(() => {
     // Проверка, изменялась ли роль
@@ -53,7 +53,8 @@ export const useRoleEditStore = defineStore('roleEdit', () => {
   }
 
   // Включение/выключение режима редактирования
-  const toggleMode = () => (isEditing.value = !isEditing.value)
+  const startEdit = () => (isEditing.value = 'EDIT')
+  const endEdit = () => (isEditing.value = 'DETAIL')
 
   // Переключение флага разрешения (например, create/read/update/delete)
   const togglePermission = (name: string, key: keyof Omit<Permission, 'id' | 'name' | 'type'>) => {
@@ -64,7 +65,7 @@ export const useRoleEditStore = defineStore('roleEdit', () => {
   // Сбросить все изменения до исходного состояния
   const resetChanges = () => {
     editedRole.value = { ...initialRole.value }
-    toggleMode()
+    endEdit()
   }
 
   // Завершение редактирования и сохранение роли
@@ -73,7 +74,7 @@ export const useRoleEditStore = defineStore('roleEdit', () => {
 
     updateRole(editedRole.value)
     initialRole.value = JSON.parse(JSON.stringify(editedRole.value))
-    toggleMode()
+    endEdit()
   }
 
   // Удаляем неактивные разрешения + сортируем для корректного сравнения
@@ -91,7 +92,7 @@ export const useRoleEditStore = defineStore('roleEdit', () => {
     initRole,
     addUserRole,
     removeUserRole,
-    toggleMode,
+    startEdit,
     togglePermission,
     resetChanges,
     onFinish,

@@ -25,7 +25,7 @@ const { onFinish, resetChanges } = useRoleEditStore()
         <BaseButton class="base-btn" text="Отмена" @click="resetChanges" outlined />
         <BaseButton
           class="base-btn"
-          text="Создать"
+          text="Сохранить"
           html-type="submit"
           :disabledBtn="!isChanged"
           primary

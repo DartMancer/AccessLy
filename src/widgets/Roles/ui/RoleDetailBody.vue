@@ -10,7 +10,7 @@ import { onBeforeRouteLeave } from 'vue-router'
 import { RoleUsersTab } from '@/widgets/Users'
 
 const { editedRole, isEditing } = storeToRefs(useRoleEditStore())
-const { toggleMode, initRole, resetChanges } = useRoleEditStore()
+const { initRole, startEdit, resetChanges } = useRoleEditStore()
 
 const { role } = defineProps<{ role: Role }>()
 
@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
   <a-flex class="role-detail-body" vertical>
     <Transition name="fade" mode="out-in">
-      <a-flex v-if="!isEditing" class="info-mode" vertical>
+      <a-flex v-if="isEditing === 'DETAIL'" class="info-mode" vertical>
         <a-flex class="role-detail-header" justify="space-between" align="center">
           <a-flex vertical>
             <h1 class="title">Детали роли</h1>
@@ -37,7 +37,7 @@ onMounted(() => {
             class="base-btn"
             :icon="Pencil"
             text="Редактировать"
-            @click="toggleMode"
+            @click="startEdit"
             primary
           />
         </a-flex>
