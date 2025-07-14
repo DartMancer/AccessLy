@@ -18,17 +18,25 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/roles/create',
-    name: 'role-create',
-    component: () => import('@/pages/RoleCreatePage.vue'),
+    path: '/roles/:id',
+    name: 'role-details',
+    component: () => import('@/pages/RoleDetailsPage.vue'),
     meta: {
       layout: 'main',
     },
   },
   {
-    path: '/roles/:id',
-    name: 'role-details',
-    component: () => import('@/pages/RoleDetailsPage.vue'),
+    path: '/users',
+    name: 'users',
+    component: () => import('@/pages/UsersPage.vue'),
+    meta: {
+      layout: 'main',
+    },
+  },
+  {
+    path: '/permissions',
+    name: 'permissions',
+    component: () => import('@/pages/PermissionsPage.vue'),
     meta: {
       layout: 'main',
     },

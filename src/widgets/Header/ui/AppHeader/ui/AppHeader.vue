@@ -1,11 +1,14 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { HEADER_ITEMS } from '../models'
 
+const route = useRoute()
 const router = useRouter()
 
-// const isActiveRoute = computed(() => (path: string) => {
-//   return route.path === path;
-// });
+const isActiveRoute = computed(() => (path: string) => {
+  return route.path === path
+})
 
 const routeTo = (path: string) => router.push(path)
 </script>
@@ -13,7 +16,17 @@ const routeTo = (path: string) => router.push(path)
 <template>
   <header class="header">
     <a-flex class="header-body" justify="space-between">
-      <span class="title" @click="routeTo('/')"> Accessly </span>
+      <span class="title" @click="routeTo('/')"> AccessLy </span>
+      <a-flex gap="40">
+        <div
+          v-for="item in HEADER_ITEMS"
+          :class="['header-item', { active: isActiveRoute(item.path) }]"
+        >
+          <span class="title" @click="routeTo(item.path)">
+            {{ item.title }}
+          </span>
+        </div>
+      </a-flex>
     </a-flex>
   </header>
 </template>
@@ -32,6 +45,22 @@ const routeTo = (path: string) => router.push(path)
 
   .header-body {
     width: 100%;
+  }
+}
+
+.header-item {
+  &.active {
+    .title {
+      color: var(--primary-color);
+      transition: 0.2s ease-in-out;
+    }
+  }
+
+  &:hover {
+    .title {
+      color: var(--hover-primary-color);
+      transition: 0.2s ease-in-out;
+    }
   }
 }
 </style>
