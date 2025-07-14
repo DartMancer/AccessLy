@@ -1,5 +1,6 @@
-export type User = {
-  id: string
-  fullname: string
-  email: string
+// Тип пользователя, связанного с ролью
+export interface User {
+  id: string // Уникальный идентификатор
+  fullname: string // Отображаемое имя (например, "Иванов И. И.")
+  email: string // Email пользователя (ключевой для идентификации)
 }

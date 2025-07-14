@@ -1,13 +1,11 @@
 import { ref, type Ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
-import { useRouter } from 'vue-router'
 import { useUserStore } from '@/entities/user'
 import type { User } from '@/entities/user'
 import type { UserFormState } from './UserFormState'
 
 export const useUserForm = (modalVisible: Ref<boolean>) => {
   const { addUser } = useUserStore()
-  const router = useRouter()
 
   const formState = ref<UserFormState>({ fullName: '', email: '' })
 

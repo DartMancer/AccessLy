@@ -2,7 +2,10 @@
 import { storeToRefs } from 'pinia'
 import { usePermissionsStore, useRoleEditStore, type Permission } from '@/entities/role'
 
+// Все доступные права из стора
 const { permissions } = storeToRefs(usePermissionsStore())
+
+// Доступ к редактируемой роли
 const { editedRole } = storeToRefs(useRoleEditStore())
 
 defineProps<{ disMode?: boolean }>()
@@ -14,6 +17,7 @@ const isFlagActive = (perm: Permission, flag: keyof Permission) => {
   return match?.[flag] ?? false
 }
 
+// Изменение флага конкретного действия (create/read/update/delete)
 const toggleFlag = (perm: Permission, flag: keyof Permission) => {
   const index = editedRole.value.permissions.findIndex(
     (p) => p.name === perm.name && p.type === perm.type,
@@ -46,6 +50,7 @@ const columns = [
 </script>
 
 <template>
+  <!-- Таблица прав с переключателями (чекбоксами) -->
   <a-table :dataSource="permissions" :columns="columns" rowKey="id" :pagination="false" bordered>
     <template #bodyCell="{ column, record }">
       <template v-if="['create', 'read', 'update', 'delete'].includes(column.key)">

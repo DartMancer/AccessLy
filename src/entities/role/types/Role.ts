@@ -1,17 +1,19 @@
+// Основной тип роли, включающий имя, описание, права и пользователей
 export interface Role {
-  id: string
-  name: string
-  description?: string
-  permissions: Permission[]
-  users: string[]
+  id: string // Уникальный id роли
+  name: string // Название роли (например, "Модератор LMS")
+  description: string // Краткое описание назначения роли
+  permissions: Permission[] // Список прав, доступных этой роли
+  users: string[] // ID пользователей, у которых назначена эта роль
 }
 
+// Тип доступа к сущностям в системе (курсы, модули и т.д.)
 export interface Permission {
-  id: string
-  name: string
-  type: string
-  create: boolean
-  read: boolean
-  update: boolean
-  delete: boolean
+  id: string // Уникальный id права (например, "uuid")
+  name: string // Название сущности (например, "Курсы")
+  type: string // Тип (например, "lms", "coi") — для группировки по источнику
+  create: boolean // Разрешение на создание
+  read: boolean // Разрешение на чтение
+  update: boolean // Разрешение на редактирование
+  delete: boolean // Разрешение на удаление
 }
