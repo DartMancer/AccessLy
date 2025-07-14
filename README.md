@@ -1,33 +1,56 @@
-# MWS-Test
+# 🛠️ Конструктор ролей - AccessLy (Vue 3)
 
-This template should help get you started developing with Vue 3 in Vite.
+Тестовое задание: интерфейс для создания, редактирования и просмотра ролей, доступов и пользователей.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🚀 Стек технологий
 
-## Type Support for `.vue` Imports in TS
+- **Vue 3** + Composition API
+- **TypeScript**
+- **Pinia** — управление состоянием
+- **Vue Router**
+- **Ant Design Vue**
+- **SCSS (SCOPED)**
+- **VueUse** — вспомогательные хуки
+- **lodash / isEqual** — сравнение данных
+- **localStorage** — хранение мок-данных (через `useStorage`)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## 📦 Архитектура проекта (FSD)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Проект структурирован по **фичам и сущностям**:
 
-## Project Setup
+src/
+│
+├── pages/ # Страницы (маршруты)
+├── widgets/ # Крупные блоки, объединяющие фичи
+├── features/ # Интерактивные фичи (формы, фильтры, триггеры)
+├── entities/ # Модели: роли, пользователи, права
+├── shared/ # Общие компоненты, стили и утилиты
+└── app/ # Точка входа, маршруты и инициализация
 
-```sh
+---
+
+## 📋 Возможности
+
+- [x] Создание роли с названием и описанием
+- [x] Создание пользователей и доступов
+- [x] Привязка доступов (CRUD-права по сущностям)
+- [x] Привязка пользователей
+- [x] Страница с детальной информацией по роли
+- [x] Фильтрация и поиск ролей
+- [x] Визуальный статус изменений (`isChanged`)
+- [x] Защита от потери данных (`beforeRouteLeave`)
+- [x] Сброс изменений, сохранение, удаление
+
+---
+
+## 🧪 Как запустить
+
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+Vite-сервер будет доступен на http://localhost:5173/
